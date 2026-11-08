@@ -47,7 +47,8 @@ class GateDriver : ProjectActivity {
                         "dismiss" -> ui { NotificationsManager.getNotificationsManager().getNotificationsOfType(Notification::class.java, project).forEach { it.expire() } }.also { say("dismissed") }
                         "project" -> ui { ToolWindowManager.getInstance(project).getToolWindow("Project")?.let { if (arg == "hide") it.hide() else it.show() } }.also { say("project $arg") }
                         "acceptsave" -> { acceptSave(arg, ::say); say("acceptsave armed $arg") }
-                        "exit" -> { say("exit"); ui { ApplicationManager.getApplication().exit(true, true, false) } }
+                        // leave this project activity first, then exit from a plain EDT event, so the project closes normally
+                        "exit" -> { say("exit"); ApplicationManager.getApplication().invokeLater { ApplicationManager.getApplication().exit(true, true, false) }; return }
                         else -> say("unknown $line")
                     }
                 } catch (t: Throwable) { say("error $line: $t") }
