@@ -1,0 +1,49 @@
+<idea-plugin>
+  <id>zovo.model-viewer</id>
+  <name>STL Viewer &amp; 3D Model Preview</name>
+  <vendor url="https://github.com/theluckystrike">Zovo</vendor>
+  <description><![CDATA[
+<p>Open STL, OBJ, PLY, 3MF, GLB and glTF files (.stl, .obj, .ply, .3mf, .glb, .gltf) as 3D models in an editor tab of IntelliJ IDEA, PyCharm, WebStorm, CLion, Rider and the other IDEs built on the IntelliJ Platform.</p>
+<p>Double-click a model in the Project view. It opens fitted to the view, on a grid, in the colours of your IDE theme. Free, offline and read-only.</p>
+<h3>What you can do</h3>
+<ul>
+  <li>Orbit, pan and zoom with the mouse. Fit (F) and the up axis (Y or Z) bring the model back.</li>
+  <li>Wireframe, vertex normals, grid, axes and a bounding box, each one click or one key away.</li>
+  <li>Size in millimetres for STL and 3MF, plus the triangle, vertex, mesh and material counts. Copy the stats as text.</li>
+  <li>Measure the distance between two points on the surface.</li>
+  <li>Flat or smooth shading, and a dark, light or theme background.</li>
+  <li>Play glTF and GLB animations, and hide or frame single parts in the scene tree.</li>
+  <li>Save the view as a PNG through the IDE save dialog. The model file is never changed.</li>
+</ul>
+<h3>Formats</h3>
+<ul>
+  <li>STL, both binary and ASCII.</li>
+  <li>OBJ with its .mtl materials and textures from the same folder.</li>
+  <li>PLY meshes and point clouds, with vertex colours.</li>
+  <li>3MF packages from slicers and CAD tools.</li>
+  <li>GLB and glTF 2.0 with PBR materials, external .bin buffers and textures.</li>
+</ul>
+<p>Large files open without freezing the IDE: the file is read in 8 MB parts straight into the viewer. A 200 MB binary STL opens in a few seconds. If WebGL is turned off (some remote or Linux setups), the tab shows the facts from the file, such as the triangle count from the STL header, and an Open in Default App button.</p>
+<p>The viewer makes no network calls and sends nothing anywhere. Free and open source (MIT): <a href="https://github.com/theluckystrike/stl-viewer-jetbrains">github.com/theluckystrike/stl-viewer-jetbrains</a>.</p>
+<h3>Support and more tools</h3>
+<ul>
+  <li><a href="https://github.com/sponsors/theluckystrike">Sponsor on GitHub</a> if this viewer saves you time.</li>
+  <li><a href="https://marketplace.visualstudio.com/items?itemName=zovo.3d-model-viewer">STL Viewer, OBJ Viewer, GLB &amp; glTF Viewer</a> for VS Code, Cursor and Windsurf.</li>
+  <li><a href="https://plugins.jetbrains.com/plugin/35878">DOCX &amp; PPTX Viewer</a> for Word and PowerPoint files.</li>
+  <li><a href="https://plugins.jetbrains.com/plugin/35879">NetCDF, HDF5 &amp; NumPy Viewer</a> for scientific data files.</li>
+  <li>All Zovo tools: <a href="https://github.com/theluckystrike">theluckystrike on GitHub</a>.</li>
+</ul>
+]]></description>
+  <change-notes><![CDATA[
+<p>0.1.0: first release. STL, OBJ, PLY, 3MF, GLB and glTF viewer with orbit, wireframe, grid and axes, bounding box in millimetres, triangle and vertex counts, measuring, animations, a scene tree and PNG screenshots.</p>
+]]></change-notes>
+  <depends>com.intellij.modules.platform</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <fileType name="3D Model" implementationClass="zovo.model.ModelFileType" fieldName="BINARY" extensions="stl;glb;ply;3mf"/>
+    <fileType name="Wavefront OBJ" implementationClass="zovo.model.ModelFileType" fieldName="OBJ" extensions="obj"/>
+    <fileType name="glTF" implementationClass="zovo.model.ModelFileType" fieldName="GLTF" extensions="gltf"/>
+    <fileEditorProvider implementation="zovo.model.ModelEditorProvider"/>
+    <fileEditorProvider implementation="zovo.model.ModelTextEditorProvider"/>
+  </extensions>
+</idea-plugin>

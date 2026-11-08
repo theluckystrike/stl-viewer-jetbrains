@@ -1,0 +1,15 @@
+{
+  "name": "stl-viewer-jetbrains-web",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Browser bundle for the STL Viewer & 3D Model Preview JetBrains plugin. Built into ../src/main/resources/web.",
+  "license": "MIT",
+  "scripts": {
+    "bundle": "node build.js",
+    "test": "node --test \"test/*.test.js\" \"test/*.test.mjs\""
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "three": "0.187.0"
+  }
+}

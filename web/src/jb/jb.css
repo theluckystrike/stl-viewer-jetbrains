@@ -1,0 +1,19 @@
+/* JetBrains shell additions. The viewer's own styles (webview.css) are unchanged from the VS Code version. */
+body { background: var(--vscode-editor-background); }
+.zovo-support { font-size: 11px; line-height: 16px; padding: 0 0 0 8px; color: var(--vscode-descriptionForeground); white-space: nowrap; }
+.zovo-support a { color: var(--vscode-textLink-foreground); text-decoration: none; }
+.zovo-support a:hover, .zovo-support a:focus { text-decoration: underline; }
+.zovo-support .zovo-sep { padding: 0 4px; opacity: .7; }
+.zovo-support [hidden] { display: none; }
+.zovo-support-fixed { position: fixed; right: 18px; bottom: 4px; z-index: 20; background: var(--vscode-editor-background); border-radius: 3px; }
+.status { padding-bottom: 6px; }
+#zovo-more { margin-top: 14px; padding-bottom: 8px; }
+#zovo-more[hidden] { display: none; }
+#zovo-more ul { list-style: none; margin: 0; padding: 0; }
+#zovo-more li { padding: 2px 0; line-height: 1.4; }
+#zovo-more a { color: var(--vscode-textLink-foreground); text-decoration: none; }
+#zovo-more a:hover { text-decoration: underline; }
+#zovo-more .note { opacity: .7; font-size: 11px; }
+.fallback { padding: 16px 20px; max-width: 760px; overflow: auto; height: 100%; box-sizing: border-box; user-select: text; -webkit-user-select: text; }
+.fallback h1 { font-size: 16px; margin: 0 0 8px; }
+.fallback .facts { font-family: var(--vscode-editor-font-family); font-size: 12px; padding: 10px 12px; border: 1px solid var(--vscode-panel-border); border-radius: 4px; white-space: pre-wrap; }
